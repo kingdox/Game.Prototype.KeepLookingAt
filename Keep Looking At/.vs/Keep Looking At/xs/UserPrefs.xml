@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{8347A048-6279-F7C5-B74D-3F429C616CBF}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Components/HoverOnTag.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Scenes/GameScene/GameManager.cs" Line="50" Column="5" />
+      <File FileName="Assets/Scripts/Internal/XavScripts/DataPass.cs" Line="13" Column="15" />
+      <File FileName="Assets/Scripts/Common/Components/Parallax.cs" Line="8" Column="38" />
+      <File FileName="Assets/Scripts/Common/Components/MultiColor.cs" Line="34" Column="6" />
+      <File FileName="Assets/Scripts/Internal/XavScripts/Data.cs" Line="18" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/Internal/XavScripts/XavLib.cs" Line="118" Column="26" NotebookId="1" />
+      <File FileName="Assets/Scripts/Common/Components/HoverOnTag.cs" Line="6" Column="39" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0d09101e-3fee-420a-89bf-3e83e3695a7d" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
