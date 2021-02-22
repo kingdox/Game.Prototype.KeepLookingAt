@@ -56,14 +56,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Scenes/GameScene/GameManager.cs" />
+    <Compile Include="Assets/Scripts/Common/Components/Parallax.cs" />
+    <Compile Include="Assets/Scripts/Common/Components/ChildLimiter.cs" />
     <Compile Include="Assets/Scripts/Internal/XavScripts/DataPass.cs" />
+    <Compile Include="Assets/Scripts/Common/Components/ImageController.cs" />
     <Compile Include="Assets/Scripts/Internal/XavScripts/Data.cs" />
     <Compile Include="Assets/Scripts/Scenes/MenuScene/MenuManager.cs" />
     <Compile Include="Assets/Scripts/Internal/XavScripts/XavLib.cs" />
-    <Compile Include="Assets/Scripts/Common/Components/ChildLimiter.cs" />
     <Compile Include="Assets/Scripts/Common/Components/MultiColor.cs" />
-    <Compile Include="Assets/Scripts/Common/Components/Parallax.cs" />
-    <Compile Include="Assets/Scripts/Common/Components/ImageController.cs" />
     <Compile Include="Assets/Scripts/Common/Components/HoverOnTag.cs" />
     <Compile Include="Assets/Scripts/Common/Components/MaterialMultiColor.cs" />
   </ItemGroup>
