@@ -65,7 +65,6 @@
     <Compile Include="Assets/Scripts/Common/Components/MultiColor.cs" />
     <Compile Include="Assets/Scripts/Common/Components/HoverTarget.cs" />
     <Compile Include="Assets/Scripts/Scenes/GameScene/UIManager.cs" />
-    <Compile Include="Assets/Scripts/Scenes/GameScene/TargetManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets/Fonts/Press_Start_2P/OFL.txt" />

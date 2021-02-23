@@ -103,6 +103,9 @@ namespace XavHelpTo
                 /// </summary>
                 public static Vector2 ScreenSize(this Vector2 s) => new Vector2(s.x.ScreenWidth(), s.y.ScreenHeight());
 
+                /// <returns>The screen in pixels</returns>
+                public static Vector2 RectScreen() => new Vector2(Screen.width, Screen.height);
+
                 /// <summary>
                 /// sacas el alto de una camara o la camara activa por defecto
                 /// </summary>
@@ -142,11 +145,12 @@ namespace XavHelpTo
             public static T Range<T>(params T[] range) => range[ZeroMax(range.Length)];
 
             /// <summary>
-            /// Tomas el valor entre el -valor y ell valor,
+            /// Returns a random value between the limits possitive and negative
             /// </summary>
             public static float MinusMax(float max) => Random.Range(-max, max);
+            public static Vector2 MinusMax(this Vector2 max) => new Vector2(MinusMax(max.x), MinusMax(max.y));
 
-                public static Vector3 MinusMax(Vector3 pos, float range, int blocked = -1){
+            public static Vector3 MinusMax(Vector3 pos, float range, int blocked = -1){
 
                     for (int x = 0; x < 3; x++){
                         if (blocked != x){
@@ -162,10 +166,13 @@ namespace XavHelpTo
                 /// <returns></returns>
                 public static int ZeroMax(this int max) => Random.Range(0, max);
                 public static float ZeroMax(this float max) => Random.Range(0, max);
-                public static int ZeroMax<T>(this T[] arr) => arr.Length.ZeroMax();
+            public static int ZeroMax<T>(this T[] arr) => arr.Length.ZeroMax();
 
+            /// <returns>A value with the minimal or else the value</returns>
+            public static float Min(this float value, float min) => min > value ? min : value;
+            public static int Min(this int value, int min) => min > value ? min : value;
+            public static Vector2 Min(this Vector2 value, float min) => new Vector2(value.x.Min(min), value.y.Min(min));
 
-           
             /// <summary>
             /// TODO revisar
             /// Coloca el valor puesto en caso de que sea null

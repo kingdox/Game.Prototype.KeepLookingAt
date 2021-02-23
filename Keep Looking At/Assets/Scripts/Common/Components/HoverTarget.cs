@@ -2,7 +2,6 @@
 using UnityEngine;
 using XavHelpTo.Get;
 using XavHelpTo.Set;
-using XavHelpTo.Know;
 #endregion
 [RequireComponent(typeof(BoxCollider2D))]
 public class HoverTarget : MonoBehaviour
@@ -12,17 +11,27 @@ public class HoverTarget : MonoBehaviour
     [Header("Hover Settings")]
     public bool isHover = false;
 
+    // 0 = normal, +0 = Crown, -0 = 
+    [Space]
+    public int scoreAddition = 1;
+    public int lifeAddition = 0;
+    [Space]
     private BoxCollider2D col2D;
     private RectTransform rect;
+    private Vector2 screenSize;
 
     [Header("Size")]
-    private const float SIZE_TIMER = 5f;
-    private float actualTimer = 5f;
-    private float sizeCountTime = 0;
-    private readonly Vector2 LIMIT_MAGNITUDE = new Vector2(.25f, 2);
-    private float actualMagnitude = 0.1f;
-    private const float MAGNITUDE_SPEED = 0.05f;
-    private bool isShrink = false;
+
+    private Vector2 actualSize = new Vector2(1, 1);
+    private float actualSpeedSize = 5;
+    private readonly Vector2 RANGE_SIZE = new Vector2(0.5f, 1.5f);
+    private readonly Vector2 RANGE_SPEED_SIZE = new Vector2(.5f, 2f);
+
+    [Header("Movements")]
+    private Vector2 actualDestination = new Vector2(0,0);
+    private float actualSpeed = 150;
+    private readonly Vector2 RANGE_SPEED = new Vector2(150, 300);
+
     #endregion
     #region Events
     private void Awake()
@@ -32,49 +41,85 @@ public class HoverTarget : MonoBehaviour
 
         //col2D.size;
         Vector2 size = rect.anchorMax - rect.anchorMin * 100;
-        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-
+        screenSize = Get.RectScreen();
         Vector2 sizePercent = size.QtyOf(screenSize) / 2;
-        //$"size: {size}, Screen.width -> {sizePercent} ".Print();
 
         col2D.size = sizePercent.Positive();
 
     }
     private void Update()
     {
+        screenSize = Get.RectScreen();
 
-        //TODO
-        //if (actualTimer.TimerIn(ref sizeCountTime))
-        //{
-        //    RefreshSize();
-        //}
-        //else
-        //{
-        //    new float magnitude = isShrink ? -MAGNITUDE_SPEED : MAGNITUDE_SPEED;
+        // POSITION
+        if (actualDestination.Equals(rect.localPosition))
+        {
+            actualDestination = (screenSize / 2).MinusMax();
+            actualSpeed = RANGE_SPEED.y.ZeroMax().Min(RANGE_SPEED.x);
+        }
+        else
+        {
+            rect.localPosition = Vector2.MoveTowards(rect.localPosition, actualDestination, actualSpeed * Time.deltaTime);
+        }
 
-        //    rect.localScale = (Vector3.one - Vector3.forward) * actualMagnitude;
+        // SIZE
+        if (actualSize.Equals(rect.localScale))
+        {
+            actualSize = (Vector2.one * RANGE_SIZE.y.ZeroMax().Min(RANGE_SIZE.x));
+            actualSpeedSize = RANGE_SPEED_SIZE.y.ZeroMax().Min(RANGE_SPEED_SIZE.x);
+        }
+        else
+        {
+            rect.localScale = Vector2.MoveTowards(rect.localScale, actualSize, actualSpeedSize * Time.deltaTime);
+        }
 
-        //    actualMagnitude += isShrink ? -MAGNITUDE_SPEED : MAGNITUDE_SPEED;
-        //    actualMagnitude = Mathf.Clamp(actualMagnitude, LIMIT_MAGNITUDE[0], LIMIT_MAGNITUDE[1]);
-        //}
-        
+
+
     }
     private void OnMouseEnter()
     {
         isHover = true;
+        GameManager.CheckHovers += OnHover;
     }
     private void OnMouseExit()
     {
-        isHover = false;   
+        isHover = false;
+        GameManager.CheckHovers -= OnHover;
+
+    }
+    private void OnEnable()
+    {
+        GameManager.CheckScore += ChangeScore;
+        GameManager.CheckLife += ChangeLife;
+    }
+    private void OnDisable()
+    {
+        GameManager.CheckScore -= ChangeScore;
+        GameManager.CheckLife -= ChangeLife;
     }
     #endregion
     #region Methods
 
-    private void RefreshSize()
+    /// <summary>
+    /// No hace nada...
+    /// </summary>
+    private void OnHover() {}
+
+    /// <summary>
+    /// Change the <seealso cref="GameManager.scoreActual"/>
+    /// </summary>
+    private void ChangeScore()
     {
-        actualTimer = SIZE_TIMER;
-        actualMagnitude = Get.Range(LIMIT_MAGNITUDE[0], LIMIT_MAGNITUDE[1]);
-        isShrink = Get.RandomBool();
+        if (isHover) GameManager.AddInScore(scoreAddition);
     }
+    /// <summary>
+    /// Change the life of the player
+    /// </summary>
+    public void ChangeLife()
+    {
+        if (isHover) GameManager.AddInLife(lifeAddition);
+    }
+
+
     #endregion
 }

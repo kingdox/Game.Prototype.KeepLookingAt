@@ -3,7 +3,9 @@ using UnityEngine;
 using XavHelpTo.Change;
 using XavHelpTo.Know;
 using XavHelpTo.Get;
+using XavHelpTo.Set;
 using XavHelpTo.Look;
+using System;
 #endregion
 public class GameManager : MonoBehaviour
 {
@@ -13,15 +15,23 @@ public class GameManager : MonoBehaviour
 
     public int scoreActual = 0;
 
-    private float scoreTimer = .25f;
+    private const float SCORE_TIME_CHECK = .05f;
     private float count = 0;
     [Header("Player Settings")]
     public int life = 0;
     public const int MAX_LIFE = 100;
 
-    private const float LIFE_TIME_CHECK = .08f;
+    private const float LIFE_TIME_CHECK = .04f;
     private float lifeTimeCount = 0;
-    private bool isHurt = false;
+    //private bool isHurt = false;
+    [Header("Events")]
+
+    public static Action CheckScore;
+    public static Action CheckLife;
+
+    [Space]
+    public static Action CheckHovers;
+
     #endregion
     #region Events
     private void Awake()
@@ -32,56 +42,50 @@ public class GameManager : MonoBehaviour
     {
         life = MAX_LIFE;
         count = 0;
+
+        
     }
     private void Update()
     {
-                
-        
 
-        
+        //Actualiza los que están en el score 
         if (LIFE_TIME_CHECK.TimerIn(ref lifeTimeCount))
         {
-            bool isAnyOnHover = false;
-            HoverTarget[] targets;
-            TargetManager.GetContainerOf(Targets.TARGET).Components(out targets);
-            foreach (HoverTarget h in targets)
-            {
-                if (!isAnyOnHover && h.isHover)
-                {
-                    isAnyOnHover = true;
-                }
-            }
+            CheckLife?.Invoke();
 
-            if (!isAnyOnHover)
+            //Pierdes vida si no hay nadie mirando
+            if (CheckHovers?.GetInvocationList().Length == null)
             {
-                isHurt = true;
-                SetDamage(1);
-            }
-            else
-            {
-                isHurt = false;
+                AddInLife(-1);
             }
         }
-
-        if (!isHurt && scoreTimer.TimerIn(ref count))
+        if (SCORE_TIME_CHECK.TimerIn(ref count))
         {
-            scoreActual++;
+            //scoreActual++;
+            CheckScore?.Invoke();
+            //scoreActual = Mathf.Clamp(scoreActual, 0, scoreActual);
         }
-
-        scoreActual = Mathf.Clamp(scoreActual, 0,scoreActual);
-    }
-    private void LateUpdate()
-    {
-        CheckGameOver();
     }
     #endregion
     #region Methods
 
-
-    public void SetDamage(int qty)
+    /// <summary>
+    /// Add or remove scorepoints
+    /// </summary>
+    public static void AddInScore(int value)
     {
-        life -= qty;
-        life = Mathf.Clamp(life, 0, MAX_LIFE);
+        _.scoreActual += value;
+        _.scoreActual = _.scoreActual.Min(0);
+
+    }
+    /// <summary>
+    /// Add or remove life
+    /// </summary>
+    public static void AddInLife(int qty)
+    {
+        _.life += qty;
+        _.life = Mathf.Clamp(_.life, 0, MAX_LIFE);
+        _.CheckGameOver();
     }
 
     /// <returns>the actual score</returns>
@@ -92,39 +96,18 @@ public class GameManager : MonoBehaviour
     private void CheckGameOver()
     {
         if (!life.Equals(0)) return;
+
+        Time.timeScale = 0;
+
         SavedData saved = DataPass.GetSavedData();
         saved.recordPts = scoreActual > saved.recordPts ? scoreActual : saved.recordPts;
         DataPass.SetData(saved);
         DataPass.SaveLoadFile(true);
 
         "MenuScene".ToScene();
-        $"GG -> {saved.recordPts}".Print();
         
     }
+
+    
     #endregion
 }
-/*
- * TODO Qué nesecitamos?
- * 
- * 
- * Script para mover aleatoriamente en el screen (PERO DEL MUNDO)
- *  - Se puede calcular el tamaño de la screen y transformar los movimientos en porcentajes
- *  - Se puede hacer que pasado cierto tiempo cambie el tamaño basado en el tamaño de la pantalla
- *  - Se puede ahcer que exista un rango de tiempo modificable en el que se cambie la dirección? (?esto no choca con ir a pos permitibles? TODO)
- *  
- *  
- *  
- * Script para ajustar proceduralmente el tamaño
- * 
- * Contador de tiempo y guardado de esta
- *  - Se manejará un timer que contará cada vez que detecte que el jugador esté en contacto con el target, sino se devuelve falso y por ende la perdida de puntos
- *  - Se tendrá un timer que cuando se acaba se termina la partida, de manera de que tienes un lapso de tiempo para resolver el problema
- *  
- * 
- * 
- * Detección del mouse cuando esta encima, podría userse un raycast....
- * 
- * 
- * 
- * 
- */
