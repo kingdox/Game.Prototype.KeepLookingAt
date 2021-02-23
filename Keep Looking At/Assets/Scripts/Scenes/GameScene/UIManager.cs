@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using XavHelpTo.Get;
+using XavHelpTo.Set;
+using XavHelpTo.Change;
 #endregion
 public class UIManager : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class UIManager : MonoBehaviour
     [Header("UI Manager")]
     public Text score;
     public Image lifeBar;
-
+    public Image HUD_BG;
     #endregion
     #region Events
     private void Awake()
@@ -39,7 +41,16 @@ public class UIManager : MonoBehaviour
             (float)GameManager.GetLife())
             .PercentOf(GameManager.MAX_LIFE) / 100
         ;
+
+        RefreshHUD_BG();
     }
+
+    public static void RefreshHUD_BG()
+    {
+        float val = _.lifeBar.fillAmount - 1;
+        _.HUD_BG.color = _.HUD_BG.color.ColorParam(ColorType.a.ToInt(), val.Positive().Min(0.2f));
+    }
+
     /// <summary>
     /// Refreshes the score
     /// </summary>

@@ -3,8 +3,6 @@ using UnityEngine;
 using XavHelpTo.Change;
 using XavHelpTo.Know;
 using XavHelpTo.Get;
-using XavHelpTo.Set;
-using XavHelpTo.Look;
 using System;
 #endregion
 public class GameManager : MonoBehaviour
@@ -23,7 +21,9 @@ public class GameManager : MonoBehaviour
 
     private const float LIFE_TIME_CHECK = .04f;
     private float lifeTimeCount = 0;
-    //private bool isHurt = false;
+    [Space]
+    public static Vector2 screenSize;
+
     [Header("Events")]
 
     public static Action CheckScore;
@@ -32,11 +32,24 @@ public class GameManager : MonoBehaviour
     [Space]
     public static Action CheckHovers;
 
+    [Header("Items Settings")]
+    public GameObject pref_item;
+    public Transform @Items;
+
+    [Space]
+    private readonly Vector2 ITEM_TIMER_RANGE = new Vector2(5, 15);
+    private float itemTimerActual=0;
+    private float itemTimerCount = 0;
+
     #endregion
     #region Events
     private void Awake()
     {
         if (_ == null) _ = this;
+        Time.timeScale = 1f;
+        screenSize = Get.RectScreen() / 2;
+
+
     }
     private void Start()
     {
@@ -47,8 +60,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        screenSize = Get.RectScreen() / 2;
 
-        //Actualiza los que están en el score 
+        // > LIFE
         if (LIFE_TIME_CHECK.TimerIn(ref lifeTimeCount))
         {
             CheckLife?.Invoke();
@@ -59,11 +73,17 @@ public class GameManager : MonoBehaviour
                 AddInLife(-1);
             }
         }
+        // > SCORE
         if (SCORE_TIME_CHECK.TimerIn(ref count))
         {
-            //scoreActual++;
             CheckScore?.Invoke();
-            //scoreActual = Mathf.Clamp(scoreActual, 0, scoreActual);
+        }
+        // > ITEM
+        if (itemTimerActual.TimerIn(ref itemTimerCount))
+        {
+            itemTimerActual = ITEM_TIMER_RANGE.y.ZeroMax().Min(ITEM_TIMER_RANGE.x);
+
+            Instantiate(pref_item,@Items);
         }
     }
     #endregion
@@ -97,7 +117,7 @@ public class GameManager : MonoBehaviour
     {
         if (!life.Equals(0)) return;
 
-        Time.timeScale = 0;
+        Time.timeScale = 0.5f;
 
         SavedData saved = DataPass.GetSavedData();
         saved.recordPts = scoreActual > saved.recordPts ? scoreActual : saved.recordPts;
@@ -105,9 +125,11 @@ public class GameManager : MonoBehaviour
         DataPass.SaveLoadFile(true);
 
         "MenuScene".ToScene();
-        
+        Time.timeScale = 1;
+
+
     }
 
-    
+
     #endregion
 }

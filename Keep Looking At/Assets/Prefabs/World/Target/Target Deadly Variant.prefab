@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deadly Image
       objectReference: {fileID: 0}
+    - target: {fileID: 5080716426082861472, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080716426082861472, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 2b7d88ee8aac44879986f01ec420dfe3, type: 2}
+    - target: {fileID: 5080716426082861472, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: 2b7d88ee8aac44879986f01ec420dfe3, type: 2}
     - target: {fileID: 5531685140882324806, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -174,6 +186,14 @@ PrefabInstance:
     - target: {fileID: 6573458706046149887, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
       propertyPath: m_Parameters.colorGradient.ctime2
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120919423569722898, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407466108831997944, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8215768743625538387, guid: eb0610ccd81d344c18bdedae8d18536d, type: 3}
       propertyPath: m_AnchoredPosition.x

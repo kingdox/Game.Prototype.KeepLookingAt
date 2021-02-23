@@ -18,7 +18,6 @@ public class HoverTarget : MonoBehaviour
     [Space]
     private BoxCollider2D col2D;
     private RectTransform rect;
-    private Vector2 screenSize;
 
     [Header("Size")]
 
@@ -39,22 +38,24 @@ public class HoverTarget : MonoBehaviour
         gameObject.Component(out col2D);
         gameObject.Component(out rect);
 
+       
+
+    }
+    private void Start()
+    {
         //col2D.size;
         Vector2 size = rect.anchorMax - rect.anchorMin * 100;
-        screenSize = Get.RectScreen();
-        Vector2 sizePercent = size.QtyOf(screenSize) / 2;
-
+        Vector2 sizePercent = size.QtyOf(GameManager.screenSize);
         col2D.size = sizePercent.Positive();
-
+        rect.localPosition = (GameManager.screenSize).MinusMax();
     }
     private void Update()
     {
-        screenSize = Get.RectScreen();
 
         // POSITION
         if (actualDestination.Equals(rect.localPosition))
         {
-            actualDestination = (screenSize / 2).MinusMax();
+            actualDestination = (GameManager.screenSize).MinusMax();
             actualSpeed = RANGE_SPEED.y.ZeroMax().Min(RANGE_SPEED.x);
         }
         else
@@ -76,16 +77,30 @@ public class HoverTarget : MonoBehaviour
 
 
     }
+    //private void OnMouseOver()
+    //{
+    //    name.InColor("magenta").Print();
+    //    if (!isHover)
+    //    {
+    //        isHover = true;
+    //        GameManager.CheckHovers += OnHover;
+    //    }
+    //}
     private void OnMouseEnter()
     {
-        isHover = true;
-        GameManager.CheckHovers += OnHover;
+        if (!isHover)
+        {
+            isHover = true;
+            GameManager.CheckHovers += OnHover;
+        }
     }
     private void OnMouseExit()
     {
-        isHover = false;
-        GameManager.CheckHovers -= OnHover;
-
+        if (isHover)
+        {
+            isHover = false;
+            GameManager.CheckHovers -= OnHover;
+        }
     }
     private void OnEnable()
     {
@@ -96,6 +111,10 @@ public class HoverTarget : MonoBehaviour
     {
         GameManager.CheckScore -= ChangeScore;
         GameManager.CheckLife -= ChangeLife;
+        if (isHover)
+        {
+            GameManager.CheckHovers -= OnHover;
+        }
     }
     #endregion
     #region Methods
