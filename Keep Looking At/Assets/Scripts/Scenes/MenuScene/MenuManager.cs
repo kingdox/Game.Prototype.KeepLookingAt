@@ -1,18 +1,35 @@
 ﻿#region Usings
 using UnityEngine;
+using UnityEngine.UI;
 using XavHelpTo.Change;
+using XavHelpTo.Look;
+using XavHelpTo.Know;
 #endregion
 public class MenuManager : MonoBehaviour
 {
     #region Variable
 
+    [Header("Visual")]
+    public Text record;
+    public Text author;
+    private const string AUTHOR = "Por Xavier Arpa L.";
+    [Header("Menu Manager Settings")]
+    private const float TIMER_AUTHOR_COLOR = 0.25f;
+    private float timerAuthorCount;
+
     #endregion
     #region Event
-    private void Awake()
+    private void Start()
     {
-        //1f.ScreenHeight();
-        //1f.ScreenWidth();
-
+        record.text = $"{Look.InColor(DataPass.GetSavedData().recordPts, Look.RandomColor())} Pts";
+    }
+    private void Update()
+    {
+        if (TIMER_AUTHOR_COLOR.TimerIn(ref timerAuthorCount))
+        {
+            author.text = AUTHOR.InColor(Look.RandomColor());
+        }
+        
     }
     #endregion
     #region Method

@@ -11,7 +11,7 @@ using S = System;
 /// <summary>
 /// Herramientas para facilitar a Xavier contra el codigo
 /// <para>Aquí se poseerán funciones unicamente "static"</para>
-/// <see cref="XavHelpTo"/> Ultima Actualización => 4 feb 2021
+/// <see cref="XavHelpTo"/> Ultima Actualización => 22 feb 2021
 ///
 /// </summary>
 namespace XavHelpTo
@@ -122,26 +122,29 @@ namespace XavHelpTo
                 /// </summary>
                 /// <returns>El porcentaje de count sobre el max</returns>
                 public static float PercentOf(this float count, float max) => count / max * 100;
-                public static float PercentOf(this float[] c) => c[0] / c[1] * 100;
+                public static int PercentOf(this int count, int max) => count / max * 100;
+                public static float PercentOf(this float[] c) => c[0].PercentOf(c[1]);
                 public static Vector2 PercentOf(this Vector2 count, Vector2 max) => count / max * 100;
 
 
             /// <summary>
             /// Basado en el porcentaje obtienes el valor mediante un maximo establecido
             /// </summary>
-            public static float QtyOf(float percent, float max) => (max / 100) * percent;
-                public static Vector2 QtyOf(Vector2 percent, Vector2 max) => (max / 100) * percent;
+                public static float QtyOf(this float percent, float max) => (max / 100) * percent;
+                public static Vector2 QtyOf(this Vector2 percent, Vector2 max) => (max / 100) * percent;
                 /// <summary>
                 /// Obtienes el valor del rango dado 
                 /// </summary>
                 public static float Range(float[] range) => Random.Range(range[0], range[1]);
                 public static int Range(int[] range) => Random.Range(range[0], range[1]);
-                public static T Range<T>(params T[] range) => range[ZeroMax(range.Length)];
+                public static float Range(Vector2 range) => Random.Range(range[0], range[1]);
 
-                /// <summary>
-                /// Tomas el valor entre el -valor y ell valor,
-                /// </summary>
-                public static float MinusMax(float max) => Random.Range(-max, max);
+            public static T Range<T>(params T[] range) => range[ZeroMax(range.Length)];
+
+            /// <summary>
+            /// Tomas el valor entre el -valor y ell valor,
+            /// </summary>
+            public static float MinusMax(float max) => Random.Range(-max, max);
 
                 public static Vector3 MinusMax(Vector3 pos, float range, int blocked = -1){
 
@@ -222,7 +225,7 @@ namespace XavHelpTo
             /// <param name="_"></param>
             /// <param name="this"></param>
             /// <param name="gameObject"></param>
-            public static void Singletone<T>(ref T @_, T @this, GameObject @gameObject)
+            public static void Singletone<T>(this GameObject @gameObject, ref T @_, T @this)
             {
                 if (@_ == null)
                 {
@@ -238,6 +241,12 @@ namespace XavHelpTo
             /// Asignas el valor a positivo en caso de ser negativo
             /// </summary>
             public static float Positive(this float f) => f < 0 ? f * -1 : f;
+            public static Vector2 Positive(this Vector2 f) => new Vector2(f.x.Positive(), f.y.Positive());
+            public static float[] Positive(params float[] f) {
+                for (int x = 0; x < f.Length; x++) f[x].Positive();
+                return f;
+            }
+
             //public static float Positive(params float[] f) => 
 
             /// <summary>
@@ -442,11 +451,13 @@ namespace XavHelpTo
                 /// </summary>
                 public static float[] ToArray(Vector3 v) => new float[] {v[0], v[1], v[2] };
 
-               
+
+                //public static int ToFloat(this int val) => Mathf.Round(val /2);
                 /// <summary>
-                /// Cambia de bool a int su valor
+                /// Cambia  a int su valor
                 /// </summary>
                 public static int ToInt(this bool condition) => condition ? 1 : 0;
+                public static int ToInt(this float val) => (int)val;
                 public static int ToInt(this S.Enum @enum) => S.Convert.ToInt32(@enum);
                 public static int ToInt<T>(this T t)
                 {
@@ -629,7 +640,7 @@ namespace XavHelpTo
                 /// <summary>
                 /// Gets the value with a concrete color 
                 /// </summary>
-                public static string InColor<T>(T value, string color="red") => $"<color={color}>{value}</color>";
+                public static string InColor<T>(this T value, string color="red") => $"<color={color}>{value}</color>";
 
                 /// <summary>
                 /// Pintamos un mensaje con color

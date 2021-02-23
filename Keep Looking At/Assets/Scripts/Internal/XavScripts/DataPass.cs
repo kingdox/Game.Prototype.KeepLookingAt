@@ -28,26 +28,11 @@ public class DataPass : MonoBehaviour
     #region ###### EVENTS
     private void Awake()
     {
-        Set.Singletone(ref _, this, gameObject);
+        gameObject.Singletone(ref _, this);
     }
     private void Start() => DataInit();
     #endregion
     #region ####### METHODS
-
-
-    //private void Singletone<T>(ref T @_, T @this,  GameObject @gameObject)
-    //{
-    //    if (@_ == null)
-    //    {
-    //        DontDestroyOnLoad(@gameObject);
-    //        @_ = @this;
-    //    }
-    //    else if (!Equals(@_, @this))//@_ != @this
-    //    {
-    //        Destroy(@gameObject);
-    //    }
-    //}
-   
 
     /// <summary>
     /// Revisamos si existen datos guardados, de no existir los crea
@@ -90,7 +75,9 @@ public class DataPass : MonoBehaviour
             _dataStorage = _formatter.Deserialize(_stream) as DataStorage;
             _stream.Close();
             SetData(_dataStorage.savedData);
-            //_.savedData = _dataStorage.savedData;
+
+            //NO BORRAR
+            _.savedData = _dataStorage.savedData;
         }
     }
 
@@ -137,9 +124,7 @@ public class DataStorage
 [System.Serializable]
 public struct SavedData
 {
-    public bool recordPts;
-
-    public int musicVolume;
+    public int recordPts;
 
     //Extra Debug ?
     [Space(10)]
