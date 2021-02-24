@@ -27,7 +27,7 @@ public class Item : MonoBehaviour
     }
     #endregion
     #region Methods
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
         GameManager.AddInLife(40f.QtyOf(GameManager.MAX_LIFE).ZeroMax().Min(25f.QtyOf(GameManager.MAX_LIFE)).ToInt());
         Destroy(gameObject);

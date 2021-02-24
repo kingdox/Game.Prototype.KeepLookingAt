@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 3091332969529946862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3742849457589618880}
   m_RootOrder: 1
@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 744f76d08959b4cce8c39741b96107f7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -142,11 +142,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 478496884951950077, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Size.x
-      value: 63
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 478496884951950077, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Size.y
-      value: 63
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 478496884951950077, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Offset.x
@@ -243,6 +243,18 @@ PrefabInstance:
     - target: {fileID: 1600311776627789140, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600311776627789140, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600311776627789140, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600311776627789142, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
+      propertyPath: lifeAddition
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1685849953923912963, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.r
@@ -374,15 +386,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4598135856186467042, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4598135856186467042, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4598135856186467042, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4598135856186467043, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Color.r

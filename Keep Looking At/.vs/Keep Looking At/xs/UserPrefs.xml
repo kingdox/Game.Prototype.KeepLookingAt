@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{8347A048-6279-F7C5-B74D-3F429C616CBF}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Scenes/MenuScene/MenuManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Scenes/GameScene/HoverTarget.cs">
     <Files>
       <File FileName="Assets/Scripts/Scenes/GameScene/GameManager.cs" Line="6" Column="14" />
       <File FileName="Assets/Scripts/Internal/XavScripts/XavLib.cs" />
-      <File FileName="Assets/Scripts/Scenes/GameScene/Item.cs" Line="23" Column="7" />
-      <File FileName="Assets/Scripts/Internal/MusicSystem.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/Scenes/GameScene/Item.cs" />
+      <File FileName="Assets/Scripts/Internal/MusicSystem.cs" />
       <File FileName="Assets/Scripts/Internal/XavScripts/Data.cs" Line="16" Column="48" NotebookId="1" />
       <File FileName="Assets/Scripts/Scenes/GameScene/UIManager.cs" NotebookId="1" />
       <File FileName="Assets/Scripts/Internal/XavScripts/DataPass.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/Scenes/GameScene/HoverTarget.cs" NotebookId="1" />
       <File FileName="Assets/Scripts/Scenes/MenuScene/MenuManager.cs" Line="40" Column="15" NotebookId="1" />
+      <File FileName="Assets/Scripts/Scenes/GameScene/HoverTarget.cs" Line="89" Column="8" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f22ce977-99a7-4768-aa24-da51bd9c42db" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="041688a7-c9ff-4cd0-bcce-b3be9f5f0b05" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

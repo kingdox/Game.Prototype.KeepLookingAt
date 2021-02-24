@@ -11,7 +11,8 @@ public class HoverTarget : MonoBehaviour
     [Header("Hover Settings")]
     public bool isHover = false;
 
-    // 0 = normal, +0 = Crown, -0 = 
+    // 0 = normal, +0 = Crown, -0 =
+    public float coliderDivisor = 1;
     [Space]
     public int scoreAddition = 1;
     public int lifeAddition = 0;
@@ -46,7 +47,7 @@ public class HoverTarget : MonoBehaviour
         //col2D.size;
         Vector2 size = rect.anchorMax - rect.anchorMin * 100;
         Vector2 sizePercent = size.QtyOf(GameManager.screenSize);
-        col2D.size = sizePercent.Positive();
+        col2D.size = sizePercent.Positive() / coliderDivisor;
         rect.localPosition = (GameManager.screenSize).MinusMax();
     }
     private void Update()
@@ -77,16 +78,7 @@ public class HoverTarget : MonoBehaviour
 
 
     }
-    //private void OnMouseOver()
-    //{
-    //    name.InColor("magenta").Print();
-    //    if (!isHover)
-    //    {
-    //        isHover = true;
-    //        GameManager.CheckHovers += OnHover;
-    //    }
-    //}
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
         if (!isHover)
         {
@@ -94,6 +86,14 @@ public class HoverTarget : MonoBehaviour
             GameManager.CheckHovers += OnHover;
         }
     }
+    //private void OnMouseEnter()
+    //{
+    //    if (!isHover)
+    //    {
+    //        isHover = true;
+    //        GameManager.CheckHovers += OnHover;
+    //    }
+    //}
     private void OnMouseExit()
     {
         if (isHover)
