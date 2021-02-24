@@ -66,6 +66,7 @@
     <Compile Include="Assets/Scripts/Scenes/GameScene/HoverTarget.cs" />
     <Compile Include="Assets/Scripts/Scenes/GameScene/UIManager.cs" />
     <Compile Include="Assets/Scripts/Scenes/GameScene/Item.cs" />
+    <Compile Include="Assets/Scripts/Internal/MusicSystem.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets/Fonts/Press_Start_2P/OFL.txt" />

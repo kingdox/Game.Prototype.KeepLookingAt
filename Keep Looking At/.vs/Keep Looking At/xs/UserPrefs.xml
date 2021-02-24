@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{8347A048-6279-F7C5-B74D-3F429C616CBF}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Scenes/GameScene/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Scenes/MenuScene/MenuManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Scenes/GameScene/GameManager.cs" Line="54" Column="1" />
-      <File FileName="Assets/Scripts/Internal/XavScripts/XavLib.cs" Line="527" Column="73" />
-      <File FileName="Assets/Scripts/Scenes/GameScene/Item.cs" Line="30" Column="29" />
-      <File FileName="Assets/Scripts/Internal/XavScripts/Data.cs" Line="4" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/Scenes/GameScene/UIManager.cs" Line="51" Column="99" NotebookId="1" />
-      <File FileName="Assets/Scripts/Internal/XavScripts/DataPass.cs" Line="8" Column="21" NotebookId="1" />
-      <File FileName="Assets/Scripts/Scenes/GameScene/HoverTarget.cs" Line="45" Column="66" NotebookId="1" />
+      <File FileName="Assets/Scripts/Scenes/GameScene/GameManager.cs" Line="6" Column="14" />
+      <File FileName="Assets/Scripts/Internal/XavScripts/XavLib.cs" />
+      <File FileName="Assets/Scripts/Scenes/GameScene/Item.cs" Line="23" Column="7" />
+      <File FileName="Assets/Scripts/Internal/MusicSystem.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/Internal/XavScripts/Data.cs" Line="16" Column="48" NotebookId="1" />
+      <File FileName="Assets/Scripts/Scenes/GameScene/UIManager.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Internal/XavScripts/DataPass.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Scenes/GameScene/HoverTarget.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Scenes/MenuScene/MenuManager.cs" Line="40" Column="15" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

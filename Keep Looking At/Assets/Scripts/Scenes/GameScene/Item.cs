@@ -20,7 +20,7 @@ public class Item : MonoBehaviour
         gameObject.Component(out rect);
     }
     private void Start()
-    {
+    { 
         //Code Smells
         col2D.size = (rect.anchorMax - rect.anchorMin * 100).QtyOf(GameManager.screenSize).Positive() / 2;
         rect.localPosition = (GameManager.screenSize).MinusMax();
