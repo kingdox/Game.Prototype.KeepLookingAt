@@ -9,7 +9,7 @@ public class HoverTarget : MonoBehaviour
     #region Variables
 
     [Header("Hover Settings")]
-    public bool isHover = false;
+    private bool isHover = false;
 
     // 0 = normal, +0 = Crown, -0 =
     public float coliderDivisor = 1;
@@ -25,12 +25,12 @@ public class HoverTarget : MonoBehaviour
     private Vector2 actualSize = new Vector2(1, 1);
     private float actualSpeedSize = 5;
     private readonly Vector2 RANGE_SIZE = new Vector2(0.5f, 1.5f);
-    private readonly Vector2 RANGE_SPEED_SIZE = new Vector2(.5f, 2f);
+    private readonly Vector2 RANGE_SPEED_SIZE = new Vector2(.6f, 3f);
 
     [Header("Movements")]
     private Vector2 actualDestination = new Vector2(0,0);
     private float actualSpeed = 150;
-    private readonly Vector2 RANGE_SPEED = new Vector2(150, 300);
+    private readonly Vector2 RANGE_SPEED = new Vector2(1.5f, 6)*100;
 
     #endregion
     #region Events

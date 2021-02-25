@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using XavHelpTo.Change;
 using XavHelpTo.Look;
 using XavHelpTo.Know;
+using Environment;
 #endregion
 public class MenuManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MenuManager : MonoBehaviour
     [Header("Visual")]
     public Text record;
     public Text author;
+    public Text version;
     private const string AUTHOR = "Por Xavier Arpa L.";
     [Header("Menu Manager Settings")]
     private const float TIMER_AUTHOR_COLOR = 0.25f;
@@ -22,6 +24,7 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         record.text = $"{Look.InColor(DataPass.GetSavedData().recordPts, Look.RandomColor())} Pts";
+        version.text = Data.data.version.InColor(Look.RandomColor());
     }
     private void Update()
     {

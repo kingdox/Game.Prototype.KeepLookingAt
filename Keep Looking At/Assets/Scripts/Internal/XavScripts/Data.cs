@@ -13,8 +13,8 @@ namespace Environment
         [HideInInspector]
         public static Data data = new Data();
 
-        public readonly string savedPath = "saved1.txt";
-        public readonly string version = "v0.0.1";
+        public readonly string savedPath = "saved2.txt";
+        public readonly string version = "v1.0.5";
 
     }
     #endregion

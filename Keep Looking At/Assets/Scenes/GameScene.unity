@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4492494975990532783, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
 --- !u!224 &288874785 stripped
@@ -468,7 +472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &747113065
@@ -849,7 +853,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082774352}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1082774356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,6 +1312,7 @@ MonoBehaviour:
   keepUpdate: 1
   scaleSpeed: 1
   timeToDisable: -1
+  destroyIfDisabled: 0
 --- !u!222 &1658408391
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1639,6 +1644,7 @@ MonoBehaviour:
   keepUpdate: 1
   scaleSpeed: 1
   timeToDisable: -1
+  destroyIfDisabled: 0
 --- !u!224 &1976279503 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3737439021239823034, guid: 217838ad21c06495d943810a82f4dd77, type: 3}
@@ -1815,6 +1821,10 @@ PrefabInstance:
     - target: {fileID: 1600311776627789140, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492494975990532783, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
@@ -2235,6 +2245,10 @@ PrefabInstance:
     - target: {fileID: 1600311776627789140, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492494975990532783, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21502b99934a048df8dfa2f7c4251bbd, type: 3}

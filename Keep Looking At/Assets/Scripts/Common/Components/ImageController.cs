@@ -18,6 +18,8 @@ public class ImageController : MonoBehaviour , IImageController
     [Space]
     [Header("Disabler, default -1")]
     public  float timeToDisable = -1;
+    public bool destroyIfDisabled = false;
+
     #endregion
     #region
     private void Awake()
@@ -33,6 +35,14 @@ public class ImageController : MonoBehaviour , IImageController
     }
     private void Update() {
         if (keepUpdate) UpdateColor();
+    }
+    private void OnDisable()
+    {
+        if (destroyIfDisabled)
+        {
+            Destroy(gameObject);
+        }
+        
     }
     #endregion
     #region

@@ -2,6 +2,7 @@
 using UnityEngine;
 using XavHelpTo.Change;
 using XavHelpTo.Know;
+using XavHelpTo.Look;
 using XavHelpTo.Get;
 using System;
 #endregion
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     private readonly Vector2 ITEM_TIMER_RANGE = new Vector2(5, 15);
     private float itemTimerActual=0;
     private float itemTimerCount = 0;
+    [Space]
+    private Camera cam;
 
     #endregion
     #region Events
@@ -47,9 +50,8 @@ public class GameManager : MonoBehaviour
     {
         if (_ == null) _ = this;
         Time.timeScale = 1f;
-        screenSize = Get.RectScreen() / 2;
-
-
+        cam = Camera.main;
+        RefreshCamera();
     }
     private void Start()
     {
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        screenSize = Get.RectScreen() / 2;
+        RefreshCamera();
 
         // > LIFE
         if (LIFE_TIME_CHECK.TimerIn(ref lifeTimeCount))
@@ -88,6 +90,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Methods
+
+    /// <summary>
+    /// Refreshes the camera
+    /// </summary>
+    private void RefreshCamera()
+    {
+        screenSize = Get.RectScreen() / 2;
+        Vector2 scale = (Vector2.one * cam.aspect);
+        Vector3 _scale = new Vector3(scale.x, scale.y, 1);
+        cam.transform.localScale = _scale;
+    }
 
     /// <summary>
     /// Add or remove scorepoints

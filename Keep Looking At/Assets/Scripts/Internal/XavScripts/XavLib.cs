@@ -665,7 +665,7 @@ namespace XavHelpTo
                 /// <summary>
                 /// Selector aleatorio de color, pretenden para debug, no para manejos de otras cosas..
                 /// </summary>
-                public static string RandomColor() => Get.Get.Range("green", "red", "magenta", "white","yellow");
+                public static string RandomColor() => Get.Get.Range("green", "red","blue", "brown", "purple","teal", "lime", "lightblue", "magenta", "white","yellow");
                 /// <summary>
                 /// Leemos en consola un arreglo de strings
                 /// </summary>

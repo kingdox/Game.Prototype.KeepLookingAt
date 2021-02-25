@@ -103,7 +103,8 @@ MonoBehaviour:
   color_want: {r: 0, g: 0, b: 0, a: 1}
   keepUpdate: 1
   scaleSpeed: 0.5
-  timeToDisable: -1
+  timeToDisable: 5
+  destroyIfDisabled: 1
 --- !u!114 &1664723653070424055
 MonoBehaviour:
   m_ObjectHideFlags: 0
